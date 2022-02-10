@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "365019926871",
+    "project_id": "smart-blood-770cb",
+    "storage_bucket": "smart-blood-770cb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:365019926871:android:81d4f9b7f3f8dd928eee12",
+        "android_client_info": {
+          "package_name": "com.example.smart_blood.smart_blood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "365019926871-6ffc4ukcefdl2k09ln2rfk5g2mrh46p5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.smart_blood.smart_blood",
+            "certificate_hash": "3983efcad482182b1c3d56021572334ae0abfadc"
+          }
+        },
+        {
+          "client_id": "365019926871-6cb0odrqivk2b4srdcg4vhqnrjmorct1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-4lLIId2PCQsCdtZhX6FwZyUsp1e32Og"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "365019926871-6cb0odrqivk2b4srdcg4vhqnrjmorct1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
