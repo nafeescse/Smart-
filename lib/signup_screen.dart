@@ -9,6 +9,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:smart_blood/Home.dart';
 import 'package:smart_blood/home_screens.dart';
 import 'package:smart_blood/login_screen.dart';
+import 'package:smart_blood/user_info.dart';
 
 class RegistrationScreen extends StatefulWidget {
   @override
@@ -29,7 +30,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       var authCredential = userCredential.user;
       print(authCredential!.uid);
       if(authCredential.uid.isNotEmpty){
-        Navigator.push(context, CupertinoPageRoute(builder: (_)=> Screen()));
+        Navigator.push(context, CupertinoPageRoute(builder: (_)=> UserForm()));
       }
       else{
         Fluttertoast.showToast(msg: "Something is wrong");
