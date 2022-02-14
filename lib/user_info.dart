@@ -37,10 +37,10 @@ class _UserFormState extends State<UserForm> {
     var currentUser = _auth.currentUser;
 
     CollectionReference _collectionRef =
-        FirebaseFirestore.instance.collection("users-form-data");
+        FirebaseFirestore.instance.collection(_bloodController.text);
     print(currentUser!.email);
     return await _collectionRef
-        .doc('currentUser.email')
+        .doc(_nameController.text)
         .set({
           "name": _nameController.text,
           "phone": _phoneController.text,
@@ -102,11 +102,11 @@ class _UserFormState extends State<UserForm> {
                   readOnly: true,
                   decoration: InputDecoration(
                     hintText: "choose your gender",
-                    prefixIcon: DropdownButton<String>(
+                    suffixIcon: DropdownButton<String>(
                       items: gender.map((String value) {
                         return DropdownMenuItem<String>(
                           value: value,
-                          child: new Text(value),
+                          child:  Text(value),
                           onTap: () {
                             setState(() {
                               _genderController.text = value;
@@ -127,12 +127,29 @@ class _UserFormState extends State<UserForm> {
                   height: 50,
                 ),
 
-                // elevated button
-                customButton("Continue", () {
-                  debugPrint('button Clicked');
-                  sendUserDataToDataBase();
+                Center(
+                  child: ElevatedButton(onPressed: (){
+                    print("Hello");
+                    sendUserDataToDataBase();
+                    print("hoise");
+                  },
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.red,
+                        elevation: 3,
+                      ),
 
-                }),
+                      child: Text('continue',style: TextStyle(color: Colors.white, fontSize: 18),
+                      )),
+                )
+
+
+                // elevated button
+                // customButton("Continue", () {
+                //   print("kdf");
+                //
+                //   sendUserDataToDataBase();
+                //   debugPrint('button Clicked');
+                // }),
               ],
             ),
           ),
@@ -149,24 +166,24 @@ class _UserFormState extends State<UserForm> {
     );
   }
 
-  Widget customButton(String buttonText, onPressed) {
-    return SizedBox(
-      width: 350,
-      height: 56,
-      child: ElevatedButton(
-        onPressed: onPressed,
-        onLongPress: (){
-          debugPrint('kkk');
-        },
-        child: Text(
-          buttonText,
-          style: TextStyle(color: Colors.white, fontSize: 18),
-        ),
-        style: ElevatedButton.styleFrom(
-          primary: Colors.red,
-          elevation: 3,
-        ),
-      ),
-    );
-  }
+  // Widget customButton(String buttonText, onPressed) {
+  //   return SizedBox(
+  //     width: MediaQuery.of(context).size.width * .95,
+  //     height: 56,
+  //     child: ElevatedButton(
+  //       onPressed: onPressed,
+  //       onLongPress: (){
+  //         debugPrint('kkk');
+  //       },
+  //       child: Text(
+  //         buttonText,
+  //         style: TextStyle(color: Colors.white, fontSize: 18),
+  //       ),
+  //       style: ElevatedButton.styleFrom(
+  //         primary: Colors.red,
+  //         elevation: 3,
+  //       ),
+  //     ),
+  //   );
+  // }
 }

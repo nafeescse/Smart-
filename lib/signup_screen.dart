@@ -30,6 +30,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       var authCredential = userCredential.user;
       print(authCredential!.uid);
       if(authCredential.uid.isNotEmpty){
+        print('condition satisfied');
         Navigator.push(context, CupertinoPageRoute(builder: (_)=> UserForm()));
       }
       else{
