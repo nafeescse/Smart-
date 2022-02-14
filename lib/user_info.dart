@@ -3,14 +3,19 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_blood/Home.dart';
+import 'package:smart_blood/signup_screen.dart';
 import 'package:smart_blood/home_screens.dart';
 
 class UserForm extends StatefulWidget {
+  String pass;
+  UserForm({required this.pass});
   @override
-  _UserFormState createState() => _UserFormState();
+  _UserFormState createState() => _UserFormState(pass: pass);
 }
 
 class _UserFormState extends State<UserForm> {
+  String pass;
+  _UserFormState({required this.pass});
   TextEditingController _nameController = TextEditingController();
   TextEditingController _phoneController = TextEditingController();
   TextEditingController _dobController = TextEditingController();
@@ -35,12 +40,11 @@ class _UserFormState extends State<UserForm> {
   sendUserDataToDataBase() async {
     final FirebaseAuth _auth = FirebaseAuth.instance;
     var currentUser = _auth.currentUser;
-
     CollectionReference _collectionRef =
         FirebaseFirestore.instance.collection(_bloodController.text);
     print(currentUser!.email);
     return await _collectionRef
-        .doc(_nameController.text)
+        .doc(pass)
         .set({
           "name": _nameController.text,
           "phone": _phoneController.text,
@@ -103,8 +107,10 @@ class _UserFormState extends State<UserForm> {
                   decoration: InputDecoration(
                     hintText: "choose your gender",
                     suffixIcon: DropdownButton<String>(
+                      iconSize: 40,
                       items: gender.map((String value) {
                         return DropdownMenuItem<String>(
+
                           value: value,
                           child:  Text(value),
                           onTap: () {

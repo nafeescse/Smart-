@@ -17,9 +17,11 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
+  String pass='';
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   bool _obscureText = true;
+
 
   signUp()async{
     try {
@@ -30,8 +32,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       var authCredential = userCredential.user;
       print(authCredential!.uid);
       if(authCredential.uid.isNotEmpty){
+        pass=_passwordController.text;
         print('condition satisfied');
-        Navigator.push(context, CupertinoPageRoute(builder: (_)=> UserForm()));
+        Navigator.push(context, CupertinoPageRoute(builder: (_)=> UserForm(pass:pass)));
       }
       else{
         Fluttertoast.showToast(msg: "Something is wrong");
